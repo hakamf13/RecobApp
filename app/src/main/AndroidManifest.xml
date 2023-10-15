@@ -13,16 +13,25 @@
         android:theme="@style/Theme.RecobApp"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.bottomnav.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.menu.recycle.RecycleActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.welcome.onboard.OnboardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.welcome.splash.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.welcome.auth.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.welcome.auth.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.bottomnav.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
