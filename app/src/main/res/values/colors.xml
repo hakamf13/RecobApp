@@ -2,13 +2,4 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="sage">#049E87</color>
-    <color name="sage_light">#D8EFE2</color>
-    <color name="sage_80">#65C18C</color>
-    <color name="sage_dark">#046357</color>
-    <color name="grey_dark">#7F8487</color>
-    <color name="grey">#9BA4B5</color>
-    <color name="grey_80">#c3c3c3</color>
-    <color name="grey_90">#F0F2F4</color>
-    <color name="grey_dark_80">#9D9AA6</color>
 </resources>
