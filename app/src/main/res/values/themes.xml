@@ -2,6 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RecobApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+        <!--Primary Color-->
+        <item name="colorPrimary">@color/sage</item>
+
+        <!--Secondary Color-->
+        <item name="colorSecondary">@color/sage_dark</item>
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
