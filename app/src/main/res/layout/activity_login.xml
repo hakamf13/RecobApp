@@ -76,11 +76,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:buttonTint="@color/grey"
             android:fontFamily="@font/roboto"
             android:text="@string/checkbox_text_reminder"
             android:textColor="@color/grey"
             android:textSize="16sp"
+            android:checked="false"
             app:layout_constraintStart_toEndOf="@id/guideline1a"
             app:layout_constraintTop_toBottomOf="@id/edit_password" />
 

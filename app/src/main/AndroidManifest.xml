@@ -31,7 +31,7 @@
             android:name=".ui.welcome.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.bottomnav.home.MainActivity"
+            android:name=".ui.bottomnav.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
