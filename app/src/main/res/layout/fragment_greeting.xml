@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:id="@+id/layoutGreeting"
+    tools:context=".ui.welcome.auth.account.GreetingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/ivGreeting"
+            android:layout_width="380dp"
+            android:layout_height="180dp"
+            android:src="@drawable/photo_greeting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Beranda"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/rounded_shape_border_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivGreeting"
+            app:layout_constraintStart_toStartOf="@id/ivGreeting"
+            app:layout_constraintEnd_toEndOf="@id/ivGreeting"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

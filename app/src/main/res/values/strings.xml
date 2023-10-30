@@ -16,4 +16,9 @@
     <string name="title_totalPt">Total Poin</string>
     <string name="title_spendPt">Tukar Poin</string>
     <string name="title_historyPt">Riwayat</string>
+    <string name="text_ic_home">Home</string>
+    <string name="text_ic_shop">Shop</string>
+    <string name="text_ic_notice">Notice</string>
+    <string name="text_ic_profile">Profile</string>
+    <string name="text_notesRecycle">Catatan: Input jumlah sampah dalam desimal silakan menggunakan titik. ex: satu setengah kilo = 1.5</string>
 </resources>

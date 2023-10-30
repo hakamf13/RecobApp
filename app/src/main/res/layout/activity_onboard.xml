@@ -6,4 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.welcome.onboard.OnboardActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpOnboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dotsIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/grey_80"
+        app:dotsSize="14dp"
+        app:dotsSpacing="4dp"
+        app:dotsWidthFactor="1.5"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:progressMode="true"
+        app:selectedDotColor="@color/sage"/>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_shape_border_button"
+        android:text="GET STARTED"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

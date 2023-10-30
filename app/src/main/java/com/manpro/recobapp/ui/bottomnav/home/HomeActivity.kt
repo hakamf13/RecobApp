@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.manpro.recobapp.databinding.ActivityHomeBinding
+import com.manpro.recobapp.ui.menu.recycle.RecycleActivity
 import com.manpro.recobapp.ui.welcome.auth.login.LoginActivity
 import com.manpro.recobapp.ui.welcome.auth.register.RegisterActivity
 
@@ -23,6 +24,13 @@ class HomeActivity : AppCompatActivity() {
                 LoginActivity::class.java
             ))
         }*/
+
+        binding.cvMenu2Recycle.setOnClickListener {
+            startActivity(Intent(
+                this@HomeActivity,
+                RecycleActivity::class.java
+            ))
+        }
 
         binding.checkLogin.setOnClickListener {
             startActivity(Intent(

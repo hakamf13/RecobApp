@@ -11,5 +11,10 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!--Remove Default SplashScreen-->
+    <style name="Theme.RemoveSplashScreenTheme" parent="Base.Theme.RecobApp">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="Theme.RecobApp" parent="Base.Theme.RecobApp" />
 </resources>
