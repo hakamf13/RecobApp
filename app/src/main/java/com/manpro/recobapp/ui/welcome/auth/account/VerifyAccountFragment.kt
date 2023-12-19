@@ -1,60 +1,153 @@
 package com.manpro.recobapp.ui.welcome.auth.account
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.klinker.android.link_builder.Link
+import com.klinker.android.link_builder.applyLinks
 import com.manpro.recobapp.R
+import com.manpro.recobapp.databinding.FragmentVerifyAccountBinding
+import com.manpro.recobapp.ui.welcome.auth.login.LoginActivity
+import com.manpro.recobapp.utils.GenericKeyEvent
+import com.manpro.recobapp.utils.GenericTextWatcher
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class VerifyAccountFragment: Fragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [VerifyAccountFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class VerifyAccountFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentVerifyAccountBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var verificationType: Int = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_verify_account, container, false)
+        _binding = FragmentVerifyAccountBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+
+        val intent = requireActivity().intent
+        verificationType = intent.getIntExtra("verificationType", 0)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment VerifyAccountFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VerifyAccountFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        setVerificationType()
+        setOtp()
+        setListener()
+        setCustomLink()
     }
+
+    private fun setVerificationType() {
+
+        if (verificationType == 1) {
+            binding.btnSend.setOnClickListener {
+                /**
+                 *
+                 * UPCOMING
+                 *
+                 *
+                 */
+                requireActivity().finish()
+                startActivity(Intent(
+                    requireContext(),
+                    GreetingFragment::class.java
+                ))
+            }
+        } else if (verificationType == 2) {
+            /**
+             *
+             * UPCOMING
+             *
+             *
+             */
+            binding.btnSend.setOnClickListener {
+                requireActivity().finish()
+                startActivity(Intent(
+                    requireActivity(),
+                    LoginActivity::class.java
+                ))
+            }
+        }
+
+
+    }
+
+    private fun setCustomLink() {
+        val resendLink = Link("Kirim Ulang")
+            .setTextColor(Color.parseColor("#049E87"))
+            .setHighlightAlpha(.4f)
+            .setUnderlined(false)
+            .setBold(false)
+            .setOnClickListener {
+                val intent = Intent(
+                    requireContext(),
+                    VerifyAccountFragment::class.java
+                )
+                startActivity(intent)
+                /**
+                 *
+                 * UPCOMING
+                 *
+                 * **/
+            }
+        val bindingLink = binding.resendLink
+        bindingLink.applyLinks(resendLink)
+    }
+
+    private fun setListener() {
+
+        binding.apply {
+
+            backNav.setOnClickListener {
+                parentFragmentManager.beginTransaction().remove(this@VerifyAccountFragment).commitAllowingStateLoss()
+            }
+
+            btnSend.setOnClickListener {
+                requireActivity().finish()
+                startActivity(Intent(
+                    requireActivity(),
+                    LoginActivity::class.java
+                ))
+            }
+
+        }
+
+    }
+
+    private fun setOtp() {
+        binding.apply {
+            // GenericTextWatcher here works only for moving to next EditText when a number is entered
+            // first parameter is the current EditText and second parameter is next EditText
+            editOtp1.addTextChangedListener(GenericTextWatcher(editOtp1, editOtp2))
+            editOtp2.addTextChangedListener(GenericTextWatcher(editOtp2, editOtp3))
+            editOtp3.addTextChangedListener(GenericTextWatcher(editOtp3, editOtp4))
+            editOtp4.addTextChangedListener(GenericTextWatcher(editOtp4, null))
+
+            // GenericKeyEvent here works for deleting the element and to switch back to previous EditText
+            // first parameter is the current EditText and second parameter is previous EditText
+            editOtp1.setOnKeyListener(GenericKeyEvent(editOtp1, null))
+            editOtp2.setOnKeyListener(GenericKeyEvent(editOtp2, editOtp1))
+            editOtp3.setOnKeyListener(GenericKeyEvent(editOtp3, editOtp2))
+            editOtp4.setOnKeyListener(GenericKeyEvent(editOtp4, editOtp3))
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+
 }

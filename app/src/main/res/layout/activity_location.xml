@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menu.recycle.checkout.LocationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Back-->
+        <ImageView
+            android:id="@+id/back_nav"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvAddressBank"
+            app:layout_constraintStart_toEndOf="@+id/guideline1a"
+            android:src="@drawable/ic_back_round_24"/>
+
+        <!--Tabung Sampah-->
+        <TextView
+            android:id="@+id/tvAddressBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Lokasi Bank Sampah"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/sage"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintTop_toTopOf="@id/back_nav"
+            app:layout_constraintStart_toEndOf="@id/back_nav"/>
+
+        <!--List Bank Sampah-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBankLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            tools:listitem="@layout/item_list_location"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressBank"
+            app:layout_constraintStart_toEndOf="@+id/guideline1a"
+            app:layout_constraintEnd_toStartOf="@id/guideline1b"/>
+
+        <!--Guideline-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

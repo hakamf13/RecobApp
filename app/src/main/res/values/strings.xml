@@ -1,4 +1,26 @@
 <resources>
+
+    <string-array name="item_name">
+        <item>TV Tabung</item>
+        <item>Selang</item>
+        <item>Pecahan Kaca</item>
+        <item>Plastik Warna</item>
+    </string-array>
+
+    <string-array name="item_value">
+        <item>20000</item>
+        <item>1000</item>
+        <item>100</item>
+        <item>200</item>
+    </string-array>
+
+    <integer-array name="item_photo">
+        <item>@drawable/data1</item>
+        <item>@drawable/data2</item>
+        <item>@drawable/data3</item>
+        <item>@drawable/data4</item>
+    </integer-array>
+
     <string name="app_name">RecobApp</string>
     <string name="hint_text_email">Email</string>
     <string name="hint_text_password">Password</string>
@@ -16,4 +38,13 @@
     <string name="title_totalPt">Total Poin</string>
     <string name="title_spendPt">Tukar Poin</string>
     <string name="title_historyPt">Riwayat</string>
+    <string name="text_ic_home">Home</string>
+    <string name="text_ic_shop">Shop</string>
+    <string name="text_ic_notice">Notice</string>
+    <string name="text_ic_profile">Profile</string>
+    <string name="text_notesRecycle">Catatan: Input jumlah sampah dalam desimal silakan menggunakan titik. ex: satu setengah kilo = 1.5</string>
+    <string name="data_bank_1">Bank Sampah Induk Surabaya</string>
+    <string name="alamat_data_bank_1">Jl. Ngagel Tim No.26, RT.009/RW.06, Pucang Sewu, Kec. Gubeng Kota SBY Jawa Timur</string>
+    <string name="laoding_text">Tunggu..</string>
+
 </resources>

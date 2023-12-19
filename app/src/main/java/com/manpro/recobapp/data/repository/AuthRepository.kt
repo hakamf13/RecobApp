@@ -1,3 +1,4 @@
+/*
 package com.manpro.recobapp.data.repository
 
 import androidx.lifecycle.LiveData
@@ -39,7 +40,7 @@ class AuthRepository(
     ) : LiveData<Result<UserRegisterResponse>> {
 //        registerResponse.value = com.manpro.recobapp.utils.Result
         val client = apiService.userPostRegister(
-            email, name, password, passwordAgain
+            email, name, password
         )
         client.enqueue(object : Callback<UserRegisterResponse> {
             override fun onResponse(
@@ -62,4 +63,4 @@ class AuthRepository(
         return registerResponse
     }
 
-}
+}*/

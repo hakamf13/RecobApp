@@ -4,23 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class UserRegisterResponse(
 
-	/*@field:SerializedName("password")
-	val password: String,
-
-	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("passwordAgain")
-	val passwordAgain: String,
-
-	@field:SerializedName("email")
-	val email: String*/
-
 	@field:SerializedName("statusCode")
 	val statusCode: Int,
 
 	@field:SerializedName("data")
-	val data: Data
+	val data: Data,
+
+	@field:SerializedName("error")
+	val error: Boolean
 
 )
 

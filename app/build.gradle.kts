@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -61,6 +64,15 @@ dependencies {
     implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
 
     implementation ("com.google.code.gson:gson:2.10.1")
+
+    // Dagger hilt
+    implementation ("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
+
+    // Accessibility
+    implementation ("com.klinkerapps:link_builder:2.0.5")
+
+    implementation("com.tbuonomo:dotsindicator:5.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
