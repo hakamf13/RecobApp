@@ -11,4 +11,6 @@
     <color name="grey_80">#c3c3c3</color>
     <color name="grey_90">#F0F2F4</color>
     <color name="grey_dark_80">#9D9AA6</color>
+    <color name="red">#DC0606</color>
+    <color name="transparent">#001A4323</color>
 </resources>

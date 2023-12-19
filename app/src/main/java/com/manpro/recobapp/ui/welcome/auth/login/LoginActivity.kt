@@ -10,6 +10,8 @@ import android.text.TextWatcher
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.applyLinks
 import com.manpro.recobapp.R
@@ -18,6 +20,9 @@ import com.manpro.recobapp.ui.bottomnav.home.HomeActivity
 import com.manpro.recobapp.ui.welcome.auth.account.ForgotPasswordFragment
 import com.manpro.recobapp.ui.welcome.auth.account.VerifyAccountFragment
 import com.manpro.recobapp.ui.welcome.auth.register.RegisterActivity
+import com.manpro.recobapp.ui.welcome.splash.dataStore
+import com.manpro.recobapp.utils.LoadingBar
+import com.manpro.recobapp.utils.SessionPreference
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,12 +30,43 @@ class LoginActivity : AppCompatActivity() {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
+    private lateinit var vm: LoginViewModel
+    private lateinit var loading: LoadingBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setListener()
         setCustomLink()
+
+        val pref = SessionPreference.getInstance(dataStore)
+        vm = ViewModelProvider(this, ViewModelFactory(pref))[LoginViewModel::class.java]
+
+        loading = LoadingBar(this)
+        vm.isLoading.observe(this) {
+            showLoading(it)
+        }
+
+        vm.snackbarText.observe(this) {
+            it.getContentIfNotHandled()?.let { it1 ->
+                Snackbar.make(
+                    window.decorView.rootView,
+                    it1,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        vm.status.observe(this) {
+            if (it) {
+                finish()
+                startActivity(Intent(
+                    this@LoginActivity, HomeActivity::class.java
+                ))
+            }
+        }
+
     }
 
     private fun setCustomLink() {
@@ -135,11 +171,18 @@ class LoginActivity : AppCompatActivity() {
             isValidButton()
 
             binding.btnLogin.setOnClickListener {
+                vm.login(
+                    binding.editEmail.text.toString(),
+                    binding.editPassword.text.toString()
+                )
+            }
+
+            /*binding.btnLogin.setOnClickListener {
                 startActivity(Intent(
                     this@LoginActivity,
                     HomeActivity::class.java
                 ))
-            }
+            }*/
 
         }
 
@@ -162,6 +205,14 @@ class LoginActivity : AppCompatActivity() {
             binding.btnLogin.isEnabled = true
         } else {
             binding.btnLogin.isEnabled = false
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            loading.startLoading()
+        } else {
+            loading.isDismiss()
         }
     }
 

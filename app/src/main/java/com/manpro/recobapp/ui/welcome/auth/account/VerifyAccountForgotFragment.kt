@@ -117,7 +117,7 @@ class VerifyAccountForgotFragment : Fragment() {
             }
 
             btnSend.setOnClickListener {
-                replaceFragment(GreetingFragment())
+                replaceFragment(ResetPasswordFragment())
             }
 
         }
@@ -127,7 +127,7 @@ class VerifyAccountForgotFragment : Fragment() {
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = activity?.supportFragmentManager
         val fragmentTransaction = fragmentManager?.beginTransaction()
-        val newFragment = GreetingFragment()
+        val newFragment = ResetPasswordFragment()
 
         fragmentTransaction?.replace(R.id.layoutVerifyForgot, newFragment)
         fragmentTransaction?.addToBackStack(null)

@@ -3,6 +3,7 @@ package com.manpro.recobapp.ui.welcome.auth.account
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -112,11 +113,30 @@ class ResetPasswordFragment : Fragment() {
     }
 
     private fun isValidButton() {
-        val newPassword = binding.editNewPassword.text.toString()
+        if (binding.editNewPassword.error == null &&
+            binding.editNewPasswordConfirmation.error == null &&
+            !TextUtils.isEmpty(binding.editNewPassword.text.toString()) &&
+            !TextUtils.isEmpty(binding.editNewPasswordConfirmation.text.toString())) {
+            binding.btnSend.isEnabled = true
+        } else {
+            binding.btnSend.isEnabled = false
+        }
+        /*val newPassword = binding.editNewPassword.text.toString()
         val confirmPassword = binding.editNewPassword.text.toString()
 
-        binding.btnSend.isEnabled = newPassword == confirmPassword && isValidPassword(newPassword)
+        binding.btnSend.isEnabled = newPassword == confirmPassword && isValidPassword(newPassword)*/
     }
+
+    /*private fun isValidButton() {
+        if (binding.editEmail.error == null &&
+            binding.editPassword.error == null &&
+            !TextUtils.isEmpty(binding.editEmail.text.toString()) &&
+            !TextUtils.isEmpty(binding.editPassword.text.toString())) {
+            binding.btnRegister.isEnabled = true
+        } else {
+            binding.btnRegister.isEnabled = false
+        }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()

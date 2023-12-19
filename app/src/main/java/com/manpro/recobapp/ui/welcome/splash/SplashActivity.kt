@@ -1,5 +1,6 @@
 package com.manpro.recobapp.ui.welcome.splash
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,15 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.manpro.recobapp.R
 import com.manpro.recobapp.databinding.ActivitySplashBinding
 import com.manpro.recobapp.ui.welcome.auth.login.LoginActivity
 import com.manpro.recobapp.ui.welcome.onboard.OnboardActivity
 
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
 @Suppress("DEPRECATION")
 class SplashActivity : AppCompatActivity() {
 

@@ -950,36 +950,9 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.90" />
 
-            <!--Check Button-->
-            <Button
-                android:id="@+id/checkLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="login"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_menu1"
-                app:layout_constraintEnd_toStartOf="@+id/checkRegister"
-                android:visibility="gone"/>
-
-            <Button
-                android:id="@+id/checkRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="register"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/checkLogin"
-                app:layout_constraintTop_toBottomOf="@+id/cv_menu1"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:visibility="gone"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stickyBottomMenu"

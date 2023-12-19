@@ -8,18 +8,24 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Patterns
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.klinker.android.link_builder.Link
 import com.klinker.android.link_builder.applyLinks
-import com.manpro.recobapp.R
 import com.manpro.recobapp.databinding.ActivityRegisterBinding
-import com.manpro.recobapp.ui.welcome.auth.account.VerifyAccountFragment
 import com.manpro.recobapp.ui.welcome.auth.login.LoginActivity
+import com.manpro.recobapp.ui.welcome.splash.dataStore
+import com.manpro.recobapp.utils.LoadingBar
+import com.manpro.recobapp.utils.SessionPreference
 
 class RegisterActivity : AppCompatActivity() {
 
     private val binding: ActivityRegisterBinding by lazy {
         ActivityRegisterBinding.inflate(layoutInflater)
     }
+
+    private lateinit var vm: RegisterViewModel
+    private lateinit var loading: LoadingBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +34,41 @@ class RegisterActivity : AppCompatActivity() {
         setListener()
         setCustomLink()
 
+        val pref = SessionPreference.getInstance(dataStore)
+        vm = ViewModelProvider(this, ViewModelFactory(pref))[RegisterViewModel::class.java]
+
+        loading = LoadingBar(this)
+        vm.isLoading.observe(this) {
+            showLoading(it)
+        }
+
         binding.backNav.setOnClickListener{
             startActivity(Intent(
                 this@RegisterActivity,
                 LoginActivity::class.java
             ))
         }
+
+        vm.snackbarText.observe(this) {
+            it.getContentIfNotHandled()?.let { it1 ->
+                Snackbar.make(
+                    window.decorView.rootView,
+                    it1,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        vm.status.observe(this) {
+            if (it) {
+                finish()
+                startActivity(Intent(
+                    this@RegisterActivity,
+                    LoginActivity::class.java
+                ))
+            }
+        }
+
     }
 
     private fun setListener() {
@@ -136,7 +171,17 @@ class RegisterActivity : AppCompatActivity() {
 
             isValidButton()
 
-            btnRegister.setOnClickListener {
+            binding.btnRegister.setOnClickListener {
+                vm.register(
+                    binding.editEmail.text.toString(),
+                    binding.editName.text.toString(),
+                    binding.editPhone.text.toString(),
+                    binding.editPassword.text.toString(),
+                    binding.editPasswordAgain.text.toString()
+                    )
+            }
+
+            /*btnRegister.setOnClickListener {
                 // Di dalam method onClick btnRegister
                 val verifyAccountFragment = VerifyAccountFragment() // Buat instance fragment
                 supportFragmentManager.beginTransaction()
@@ -144,7 +189,7 @@ class RegisterActivity : AppCompatActivity() {
                     .addToBackStack(null) // Jika Anda ingin menambahkan ke back stack
                     .commit()
 
-            }
+            }*/
 
         }
     }
@@ -161,7 +206,8 @@ class RegisterActivity : AppCompatActivity() {
         if (binding.editEmail.error == null &&
             binding.editPassword.error == null &&
             !TextUtils.isEmpty(binding.editEmail.text.toString()) &&
-            !TextUtils.isEmpty(binding.editPassword.text.toString())) {
+            !TextUtils.isEmpty(binding.editPassword.text.toString()) &&
+            !TextUtils.isEmpty(binding.editPasswordAgain.text.toString())) {
             binding.btnRegister.isEnabled = true
         } else {
             binding.btnRegister.isEnabled = false
@@ -184,5 +230,12 @@ class RegisterActivity : AppCompatActivity() {
         bindingLink.applyLinks(loginLink)
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            loading.startLoading()
+        } else {
+            loading.isDismiss()
+        }
+    }
 
 }

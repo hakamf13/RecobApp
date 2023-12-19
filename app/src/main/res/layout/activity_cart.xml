@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_90"
+    tools:context=".ui.menu.recycle.checkout.CartActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Lokasi Inputan-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clInputanLokasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!--Back-->
+            <ImageView
+                android:id="@+id/back_nav"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvCheckoutSampah"
+                app:layout_constraintStart_toEndOf="@+id/guideline1c"
+                android:src="@drawable/ic_back_round_24"/>
+
+            <!--Tabung Sampah-->
+            <TextView
+                android:id="@+id/tvCheckoutSampah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Checkout Sampah"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/sage"
+                android:fontFamily="@font/roboto_medium"
+                app:layout_constraintTop_toTopOf="@id/back_nav"
+                app:layout_constraintStart_toEndOf="@id/back_nav"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clLokasiBankSampah"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvCheckoutSampah"
+                app:layout_constraintStart_toEndOf="@+id/guideline1c"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1d">
+
+                <ImageView
+                    android:id="@+id/pinpointIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_pinpoint"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAddressLocation"/>
+
+                <TextView
+                    android:id="@+id/tvTitleLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_bank_1"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/pinpointIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/tvAddressLocation"/>
+
+                <TextView
+                    android:id="@+id/tvAddressLocation"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alamat_data_bank_1"
+                    android:textSize="14sp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleLocation"
+                    app:layout_constraintStart_toEndOf="@+id/pinpointIcon" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divider -->
+            <RelativeLayout
+                android:id="@+id/rlDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clLokasiBankSampah">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_80"
+                    style="@style/Widget.Material3.MaterialDivider"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+            </RelativeLayout>
+
+            <!--Guideline-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Barang Inputan-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBarangInputan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clInputanLokasi">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBarangCo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline1b"
+                    app:layout_constraintStart_toEndOf="@+id/guideline1a"
+                    tools:listitem="@layout/item_list_cart" />
+            </ScrollView>
+
+            <!--Guideline-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Sticky Tukar-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clChangeSticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvTitleHargaTotalCo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga Total: "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnCartSticky"/>
+
+        <TextView
+            android:id="@+id/tvValueHargaTotalCo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="160000 Poin"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/sage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnCartSticky"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCartSticky"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/rounded_shape_border_button"
+            android:text="Tukarkan"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleHargaTotalCo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
