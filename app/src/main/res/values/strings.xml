@@ -14,12 +14,59 @@
         <item>200</item>
     </string-array>
 
+    <string-array name="item_qty">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="item_poin">
+        <item>40000</item>
+        <item>5000</item>
+        <item>1000</item>
+        <item>1000</item>
+    </string-array>
+
+    <string-array name="item_totalPoin">
+        <item>40000</item>
+        <item>5000</item>
+        <item>1000</item>
+        <item>1000</item>
+    </string-array>
+
     <integer-array name="item_photo">
         <item>@drawable/data1</item>
         <item>@drawable/data2</item>
         <item>@drawable/data3</item>
         <item>@drawable/data4</item>
     </integer-array>
+
+    <string-array name="data_lokasi">
+        <item>Bank Sampah Induk Surabaya</item>
+        <item>Bank Sampah NH</item>
+        <item>Bank Sampah Spenfora</item>
+        <item>Bank Sampah Merpati</item>
+        <item>Bank Sampah Makmur 5 Surabaya</item>
+        <item>Bank Sampah Semangka</item>
+        <item>Bank Sampah Bintang</item>
+        <item>Bank Sampah Lestari</item>
+        <item>Bank Sampah Manyar Berseri</item>
+        <item>Bank Sampah Mekar Sari</item>
+    </string-array>
+
+    <string-array name="data_lokasi_lengkap">
+        <item>Jl. Kalibokor II No.5 60283 Surabaya Jawa Timur</item>
+        <item>Jl. Ngagel Tim No.26, RT.009/RW.06, Pucang Sewu, Kec. Gubeng Kota SBY Jawa Timur</item>
+        <item>Jl. No. 12 Jalan. Tanjung Anom 60275 Genteng Jawa Timur</item>
+        <item>Jl. Ikan Kerapu 4 No 27 60177 Surabaya Jawa Timur</item>
+        <item>Jl. Demak Timur V No.5, Gundih, Kec. Bubutan Kota SBY Jawa Timur</item>
+        <item>Jl. Kebonsari Ⅰ No.18 60233 Surabaya Jawa</item>
+        <item>Jl. Raya Menur No.31-A 60116 Surabaya Jawa Timur</item>
+        <item>Jl. Kapasan Kidul Kapasan Lor No.1, RT.001/RW.03 60141 Surabaya Jawa</item>
+        <item>Jl. Manyar Sabrangan IV No.33, RT.001/RW.04 60116 Surabaya Jawa Timur</item>
+        <item>Jl. Kedung Anyar VI No.32, RT.008/RW.12 60251 Surabaya Jawa Timur</item>
+    </string-array>
 
     <string name="app_name">RecobApp</string>
     <string name="hint_text_email">Email</string>

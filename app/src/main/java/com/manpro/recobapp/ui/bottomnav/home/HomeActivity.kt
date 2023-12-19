@@ -3,6 +3,7 @@ package com.manpro.recobapp.ui.bottomnav.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.manpro.recobapp.data.local.model.recycle.RecycleModel
 import com.manpro.recobapp.databinding.ActivityHomeBinding
 import com.manpro.recobapp.ui.bottomnav.notification.NotificationActivity
 import com.manpro.recobapp.ui.bottomnav.profile.ProfileActivity
@@ -11,6 +12,7 @@ import com.manpro.recobapp.ui.menu.recycle.RecycleActivity
 import com.manpro.recobapp.ui.welcome.auth.login.LoginActivity
 import com.manpro.recobapp.ui.welcome.auth.register.RegisterActivity
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
 
     private val binding: ActivityHomeBinding by lazy {
@@ -22,6 +24,16 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        val dataCartContent = intent.getParcelableExtra<RecycleModel>(POIN)
+
+        if (dataCartContent != null) {
+            binding.apply {
+                tvValueTotalPt.text = dataCartContent.value
+            }
+        } else {
+//            binding.tvValueTotalPt.text = "20000"
+        }
 
         binding.cvMenu2Recycle.setOnClickListener {
             startActivity(Intent(
@@ -52,8 +64,9 @@ class HomeActivity : AppCompatActivity() {
             ))
         }
 
+    }
 
-
-
+    companion object {
+        const val POIN = "poin"
     }
 }
