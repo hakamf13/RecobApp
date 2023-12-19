@@ -11,6 +11,8 @@ data class RecycleModel(
 
     val value: String,
 
-    val photoUrl: Int
+    val photoUrl: Int,
+
+    val quantity: Int = 0
 
 ) : Parcelable
