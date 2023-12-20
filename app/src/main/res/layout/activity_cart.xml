@@ -137,11 +137,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/clInputanLokasi">
 
-            <ScrollView
+            <!--<ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
@@ -154,7 +155,112 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline1b"
                     app:layout_constraintStart_toEndOf="@+id/guideline1a"
                     tools:listitem="@layout/item_list_cart" />
-            </ScrollView>
+            </ScrollView>-->
+
+            <!--Image Barang-->
+            <ImageView
+                android:id="@+id/ivBarangCo"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/data1"/>
+
+            <!--Title Barang-->
+            <TextView
+                android:id="@+id/namaBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TV Tabung 24 Inch"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivBarangCo" />
+
+            <!--Jumlah Barang-->
+            <TextView
+                android:id="@+id/titleJumlahBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumlah: "
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/namaBarangCo"
+                app:layout_constraintStart_toStartOf="@+id/namaBarangCo"/>
+
+            <TextView
+                android:id="@+id/valueJumlahBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8 Kg"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/namaBarangCo"
+                app:layout_constraintStart_toEndOf="@+id/titleJumlahBarangCo"/>
+
+            <!--Harga Barang-->
+            <TextView
+                android:id="@+id/titleHargaBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga: "
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleJumlahBarangCo"
+                app:layout_constraintStart_toStartOf="@+id/namaBarangCo"/>
+
+            <TextView
+                android:id="@+id/valueHargaBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20000 Poin/Kg"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleJumlahBarangCo"
+                app:layout_constraintStart_toEndOf="@+id/titleJumlahBarangCo"/>
+
+            <!--Total Poin-->
+            <TextView
+                android:id="@+id/totalPoinCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/sage"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleHargaBarangCo"
+                app:layout_constraintStart_toStartOf="@+id/namaBarangCo"/>
+
+            <TextView
+                android:id="@+id/valuePoinBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="160000 Poin"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/sage"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/titleHargaBarangCo"
+                app:layout_constraintStart_toEndOf="@+id/titleJumlahBarangCo"/>
+
+            <!--Hapus Barang-->
+            <TextView
+                android:id="@+id/tvHapusBarangCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hapus"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/totalPoinCo"
+                app:layout_constraintStart_toStartOf="@+id/namaBarangCo"/>
 
             <!--Guideline-->
             <androidx.constraintlayout.widget.Guideline

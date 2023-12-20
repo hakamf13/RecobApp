@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.manpro.recobapp.data.local.model.recycle.RecycleModel
 import com.manpro.recobapp.databinding.ItemListRecycleBinding
+import com.manpro.recobapp.ui.menu.recycle.checkout.CartModel
 
 class DummyRecycleAdapter(private val listItem: ArrayList<RecycleModel>) : RecyclerView.Adapter<DummyRecycleAdapter.ListViewHolder>() {
 
@@ -18,13 +19,13 @@ class DummyRecycleAdapter(private val listItem: ArrayList<RecycleModel>) : Recyc
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DummyRecycleAdapter.ListViewHolder {
+    ): ListViewHolder {
         val binding = ItemListRecycleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, value, photoUrl) = listItem[position]
+        val (photoUrl, name, quantity, value, point, totalPoint) = listItem[position]
         holder.binding.tvTitleRecyclePhoto.text = name
         holder.binding.tvValueRecyclePhoto.text = "$value Poin/Kg"
 
@@ -34,9 +35,11 @@ class DummyRecycleAdapter(private val listItem: ArrayList<RecycleModel>) : Recyc
             .into(holder.binding.ivRecyclePhoto)
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(
-                listItem[holder.absoluteAdapterPosition]
-            )
+            if (::onItemClickCallback.isInitialized) {
+                onItemClickCallback.onItemClicked(
+                    listItem[holder.absoluteAdapterPosition]
+                )
+            }
         }
     }
 
