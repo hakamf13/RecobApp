@@ -92,8 +92,7 @@ class CartActivity : AppCompatActivity() {
                 this@CartActivity,
                 HomeActivity::class.java
             )
-            homeIntent.putExtra(HomeActivity.POIN, dataItemContent?.totalPoint)
-
+            homeIntent.putExtra(HomeActivity.POIN, dataItemContent?.totalPoint?.toInt() ?: 0)
             startActivity(homeIntent)
         }
 

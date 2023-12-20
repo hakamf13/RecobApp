@@ -45,6 +45,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline1b"/>
 
     <TextView
+        android:id="@+id/kembaliBeranda"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Kembali ke Beranda"

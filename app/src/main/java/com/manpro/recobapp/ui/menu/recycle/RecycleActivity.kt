@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,12 +23,16 @@ import com.manpro.recobapp.ui.menu.recycle.checkout.CartActivity
 import com.manpro.recobapp.ui.menu.recycle.checkout.CartModel
 import com.manpro.recobapp.ui.menu.recycle.checkout.LocationActivity
 import com.manpro.recobapp.ui.menu.recycle.dummy.DummyRecycleAdapter
+import com.manpro.recobapp.ui.welcome.splash.dataStore
+import com.manpro.recobapp.utils.SessionPreference
 
 class RecycleActivity : AppCompatActivity() {
 
     private val binding: ActivityRecycleBinding by lazy {
         ActivityRecycleBinding.inflate(layoutInflater)
     }
+
+    private lateinit var vm: RecycleViewModel
 
     private lateinit var rvRecycle: RecyclerView
     private val list = ArrayList<RecycleModel>()
@@ -38,6 +43,9 @@ class RecycleActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        val pref = SessionPreference.getInstance(dataStore)
+        vm = ViewModelProvider(this, ViewModelFactory(pref))[RecycleViewModel::class.java]
+
         rvRecycle = findViewById(R.id.rvBarangCo)
         rvRecycle.setHasFixedSize(true)
 
@@ -47,9 +55,15 @@ class RecycleActivity : AppCompatActivity() {
         setSearchView()
         setListener()
 
-        binding.btnCartSticky.setOnClickListener {
+        /*binding.btnCartSticky.setOnClickListener {
             val dataIntent = Intent(this, LocationActivity::class.java)
             dataIntent.putExtra(CartActivity.ITEMS, listItem)
+            startActivity(dataIntent)
+        }*/
+
+        binding.btnCartSticky.setOnClickListener {
+            val dataIntent = Intent(this@RecycleActivity, LocationActivity::class.java)
+            dataIntent.putExtra(LocationActivity.DATAS, listItem)
             startActivity(dataIntent)
         }
 
@@ -88,11 +102,6 @@ class RecycleActivity : AppCompatActivity() {
             override fun onItemClicked(data: RecycleModel) {
                 showSelectedItems(data)
                 openDialog(data)
-                binding.btnCartSticky.setOnClickListener {
-                    val dataIntent = Intent(this@RecycleActivity, LocationActivity::class.java)
-                    dataIntent.putExtra(LocationActivity.DATAS, data)
-                    startActivity(dataIntent)
-                }
             }
         })
     }
@@ -139,6 +148,19 @@ class RecycleActivity : AppCompatActivity() {
                 totalPoint = item.totalPoint
             )*/
 
+            val itemPoin = calculatePoint(item)
+            vm.updatePoinAfterAddItem(itemPoin)
+
+            val dataIntent = Intent(this@RecycleActivity, LocationActivity::class.java)
+            dataIntent.putExtra(LocationActivity.DATAS, item)
+            startActivity(dataIntent)
+
+            /*binding.btnCartSticky.setOnClickListener {
+                val dataIntent = Intent(this@RecycleActivity, LocationActivity::class.java)
+                dataIntent.putExtra(LocationActivity.DATAS, data)
+                startActivity(dataIntent)
+            }*/
+
             /*val intent = Intent(this, CartActivity::class.java).apply {
                 putExtra("photoUrl", item.photoUrl)
                 putExtra("nama", item.name)
@@ -164,6 +186,10 @@ class RecycleActivity : AppCompatActivity() {
         layoutParams?.dimAmount = 0.7f
         dialog.window?.attributes = layoutParams
         dialog.show()
+    }
+
+    private fun calculatePoint(item: RecycleModel): Int {
+        return item.value.toInt() * item.quantity.toInt()
     }
 
     /*private fun calculatePoint(item: RecycleModel): Int {

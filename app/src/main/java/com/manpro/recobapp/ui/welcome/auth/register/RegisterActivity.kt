@@ -69,6 +69,8 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        vm.saveUserData(binding.editName.text.toString())
+
     }
 
     private fun setListener() {
@@ -178,7 +180,14 @@ class RegisterActivity : AppCompatActivity() {
                     binding.editPhone.text.toString(),
                     binding.editPassword.text.toString(),
                     binding.editPasswordAgain.text.toString()
-                    )
+                ) {
+                    vm.saveUserData(binding.editName.text.toString())
+                    startActivity(Intent(
+                        this@RegisterActivity,
+                        LoginActivity::class.java
+                    ))
+                    finish()
+                }
             }
 
             /*btnRegister.setOnClickListener {

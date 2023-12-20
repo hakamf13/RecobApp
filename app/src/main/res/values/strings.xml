@@ -79,7 +79,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="titleText_verifikasi">Verifikasi</string>
     <string name="messageText_verifikasi">Kami baru saja mengirimkan OTP ke email Anda, silakan masukkan di bawah untuk memverifikasi</string>
-    <string name="dummyText_titleWelcome">Hi, Sepuh Aji</string>
+    <string name="dummyText_titleWelcome">Hi, Aji Prayoga</string>
     <string name="dummyText_messageTitleWelcome">Selamat datang di Recob</string>
     <string name="dummyValue_totalPt">0</string>
     <string name="title_totalPt">Total Poin</string>

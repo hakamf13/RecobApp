@@ -58,7 +58,7 @@ class LocationActivity : AppCompatActivity() {
         listItems.setOnItemClickCallback(object : LocationAdapter.OnItemClickCallback {
             override fun onItemClicked(data: LocationModel) {
                 showSelectedItems(data)
-                val dataReceive = intent.getParcelableExtra<RecycleModel>(RecycleActivity.ITEM)
+                val dataReceive = intent.getParcelableExtra<RecycleModel>(DATAS)
                 val dataLocationIntent = Intent(
                     this@LocationActivity,
                     CartActivity::class.java

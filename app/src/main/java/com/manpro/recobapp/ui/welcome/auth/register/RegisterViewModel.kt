@@ -29,6 +29,12 @@ class RegisterViewModel(private val pref: SessionPreference) : ViewModel() {
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
 
+    fun saveUserData(name: String) {
+        viewModelScope.launch {
+            pref.setUserName(name)
+        }
+    }
+
     fun getToken(): LiveData<String> {
         return pref.getToken().asLiveData()
     }
@@ -44,13 +50,14 @@ class RegisterViewModel(private val pref: SessionPreference) : ViewModel() {
         name: String,
         phone: String,
         password: String,
-        passwordAgain: String
+        passwordAgain: String,
+        function: () -> Unit
     ) {
         _isLoading.value = true
         val jsonObject = JSONObject()
         jsonObject.put("email", email)
         jsonObject.put("name", name)
-        jsonObject.put("phone", phone)
+        jsonObject.put("alamat", phone)
         jsonObject.put("password", password)
         jsonObject.put("passwordAgain", passwordAgain)
         val jsonObjectString = jsonObject.toString()

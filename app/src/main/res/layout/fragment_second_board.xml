@@ -35,7 +35,7 @@
         android:id="@+id/tvMessageSecondBoard"
         android:layout_width="355dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="68dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:text="Yuk, kita bersama-sama memanfaatkan aplikasi Recob! Mari kita belajar bersama dan berbuat baik untuk masa depan yang lebih baik"

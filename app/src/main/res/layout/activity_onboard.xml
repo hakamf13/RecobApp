@@ -21,7 +21,7 @@
         app:dotsSize="14dp"
         app:dotsSpacing="4dp"
         app:dotsWidthFactor="1.5"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="140dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

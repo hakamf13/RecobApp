@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.manpro.recobapp.data.network.response.DataLogin
 import com.manpro.recobapp.data.network.response.UserLoginResponse
 import com.manpro.recobapp.data.network.retrofit.ApiConfig
 import com.manpro.recobapp.utils.Event
@@ -28,6 +29,9 @@ class LoginViewModel(private val pref: SessionPreference) : ViewModel() {
 
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
+
+    private val _username = MutableLiveData<String>()
+    val username: LiveData<String> = _username
 
     fun getToken(): LiveData<String> {
         return pref.getToken().asLiveData()
